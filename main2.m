@@ -18,8 +18,8 @@ clc, clear, close all
 %% Código da aplicação
 
 % Leitura da imagem
-% imagem = imread('dataset/all_short/good_quality_104.jpg');
-imagem = imread('dataset/all_short/good_quality_108.jpg');
+imagem = imread('dataset/all_short/good_quality_104.jpg');
+% imagem = imread('dataset/all_short/good_quality_108.jpg');
 % imagem = imread('dataset/dataset-used/0012_G_V_45_F.jpg');
 
 % Padronização do tamanho das imagens
@@ -119,7 +119,7 @@ function removerFundoImagem(imagem)
     defect_mask = bwareaopen(mascaraLimao, 50);
 
     % Refinar a máscara de defeitos com operações morfológicas
-    se_small = strel('disk', 2);
+    se_small = strel('disk', 3);
     defect_mask = imclose(defect_mask, se_small);
     defect_mask = imfill(defect_mask, 'holes');
     defect_mask = bwareaopen(defect_mask, 100);
